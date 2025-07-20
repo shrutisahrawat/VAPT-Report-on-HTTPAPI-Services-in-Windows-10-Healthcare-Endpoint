@@ -18,6 +18,20 @@ This report also focuses on enforcing system hardening measures by applying fire
 
 ---
 
+### 🛠️ Tools Used
+
+| Tool                      | Purpose                                                               |
+| ------------------------- | --------------------------------------------------------------------- |
+| **Nmap**                  | Network scanning and port discovery (e.g., detecting open port 5357)  |
+| **Metasploit**            | Exploitation framework used to gain reverse shell access via CVE      |
+| **Wireshark**             | (Optional) Packet capture and analysis of HTTPAPI traffic             |
+| **Windows Firewall**      | Manual configuration to block/allow HTTPAPI service post-exploitation |
+| **CMD/PowerShell**        | Service enumeration, port listing (`netstat`, `sc query`, etc.)       |
+| **Draw\.io / Lucidchart** | For network/attack flow diagrams (recommended for visualization)      |
+| **Git & GitHub**          | Version control and collaboration on the VAPT project documentation   |
+
+---
+
 # Vulnerability Assessment and Penetration Testing (VAPT) Report
 
 ## Target: Windows 10 Host – Healthcare Environment
