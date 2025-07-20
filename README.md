@@ -16,6 +16,7 @@ This report also focuses on enforcing system hardening measures by applying fire
   <img src="https://github.com/user-attachments/assets/2ec860ca-6629-44ba-9595-f429dfe34e54" alt="VAPT_Cover">
 </p>
 
+
 ---
 
 ### 🛠️ Tools Used
